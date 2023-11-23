@@ -29,13 +29,27 @@ const Countdown = () => {
     return () => clearInterval(intervalId);
     }, [targetDate]);
 
+    const showCountdown = currentDate < targetDate;
+
     return (
-        <div className='mt-80'>
-                <h1 className='flex justify-center text-5xl mb-2'>Cordoba</h1>
-                <div className='flex justify-center text-2xl font-light'>
-                    <p>{countdown.days} dias, {countdown.hours} horas, {countdown.minutes} minutos y {countdown.seconds} segundos</p>
+        <>
+            {showCountdown ? (
+                <div className='mt-40'>
+                    <h1 className='flex justify-center text-5xl mb-2'>Cordoba</h1>
+                    <div className='flex flex-col items-center justify-center text-2xl font-light'>
+                        <p>{countdown.days} días</p>
+                        <p>{countdown.hours} horas</p>
+                        <p>{countdown.minutes} minutos</p>
+                        <p>{countdown.seconds} segundos</p>
+                    </div>
                 </div>
-        </div>
+            ) : (
+                <div className='mt-40 text-5xl text-center'>
+                    <h1>Llego el dia!</h1>
+                    {/* Puedes agregar aquí cualquier contenido adicional que desees mostrar */}
+                </div>
+            )}
+        </>
     );
 };
 
